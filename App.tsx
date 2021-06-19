@@ -1,29 +1,12 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  StatusBar,
-  Platform,
-} from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { Provider as PaperProvider } from "react-native-paper";
-import { SearchBar } from "./src/components/SearchBar";
-
-const isAndroid = Platform.OS === "android";
+import { RestaurantsScreen } from "./src/features/restaurants/screens/Restaurants.screen";
 
 function App() {
   return (
     <>
-      <SafeAreaView style={styles.rootContainer}>
-        <View style={styles.searchContainer}>
-          <SearchBar />
-        </View>
-        <View style={styles.container}>
-          <Text>Our React Native Blank Canvas !</Text>
-        </View>
-      </SafeAreaView>
+      <RestaurantsScreen />
       <ExpoStatusBar style="auto" />
     </>
   );
@@ -36,21 +19,3 @@ export default function Main() {
     </PaperProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  rootContainer: {
-    flex: 1,
-    // to keep space for current status bar
-    // we use marginTop in case of android
-    // but in case of iOS we use SafeAreaView
-    marginTop: isAndroid ? StatusBar.currentHeight : 0,
-  },
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "blue",
-  },
-  searchContainer: {
-    padding: 16,
-  },
-});
