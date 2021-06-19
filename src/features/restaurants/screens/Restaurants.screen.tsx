@@ -1,17 +1,15 @@
 import React from "react";
-import { View, SafeAreaView, StatusBar, Platform } from "react-native";
+import { View, SafeAreaView, StatusBar } from "react-native";
 import styled from "styled-components/native";
 import { SearchBar } from "../../../components/SearchBar";
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard.component";
 
-const isAndroid = Platform.OS === "android";
-
 // to keep space for current status bar
 // we use marginTop in case of android
 // but in case of iOS we use SafeAreaView
-const RootContainer = styled(SafeAreaView)`
+const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  margin-top: ${isAndroid ? StatusBar.currentHeight : 0}px;
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
 
 const SearchContainer = styled(View)`
@@ -26,13 +24,13 @@ const InfoContainer = styled(View)`
 
 export const RestaurantsScreen = () => {
   return (
-    <RootContainer>
+    <SafeArea>
       <SearchContainer>
         <SearchBar />
       </SearchContainer>
       <InfoContainer>
         <RestaurantInfoCard />
       </InfoContainer>
-    </RootContainer>
+    </SafeArea>
   );
 };
