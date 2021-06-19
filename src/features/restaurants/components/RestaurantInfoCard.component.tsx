@@ -1,9 +1,10 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import stars from "../../../../assets/stars";
+import openNowIcon from "../../../../assets/open-now-icon";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -37,10 +38,29 @@ const Address = styled(Text)`
   font-size: ${(props) => props.theme.fontSizes.caption};
 `;
 
+const IconsSection = styled(View)`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const IconsSectionEnd = styled(View)`
+  flex-direction: row;
+  align-items: center;
+`;
+
+const ClosedTempInfo = styled(Text)`
+  color: ${(props) => props.theme.colors.text.error};
+`;
+
+const Icon = styled(Image)`
+  width: ${(props) => props.theme.sizes[1]};
+  height: ${(props) => props.theme.sizes[1]};
+`;
+
 export const RestaurantInfoCard = ({
   restaurant = {
     name: "Some Restaurant",
-    icon: "",
+    icon: "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos: [
       "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=85",
       "https://images.unsplash.com/photo-1546195643-70f48f9c5b87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=85",
@@ -70,11 +90,28 @@ export const RestaurantInfoCard = ({
       <Cover source={{ uri: photos[0] }} />
       <Info>
         <Title>{name}</Title>
-        <Rating>
-          {ratingArray.map((_, index) => (
-            <SvgXml key={index} xml={stars} width={20} height={20} />
-          ))}
-        </Rating>
+        <IconsSection>
+          <Rating>
+            {ratingArray.map((_, index) => (
+              <SvgXml key={index} xml={stars} width={20} height={20} />
+            ))}
+          </Rating>
+          <IconsSectionEnd>
+            {isClosedTemporarily && (
+              <ClosedTempInfo>CLOSED TEMPORARILY</ClosedTempInfo>
+            )}
+            {isOpenNow && (
+              <SvgXml
+                key="open-now-icon"
+                xml={openNowIcon}
+                width={20}
+                height={20}
+                style={{ marginLeft: 12 }}
+              />
+            )}
+            {icon && <Icon source={{ uri: icon }} />}
+          </IconsSectionEnd>
+        </IconsSection>
         <Address>{address}</Address>
       </Info>
     </RestaurantCard>
