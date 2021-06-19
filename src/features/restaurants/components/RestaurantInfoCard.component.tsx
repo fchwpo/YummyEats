@@ -4,12 +4,17 @@ import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 
 const RestaurantCard = styled(Card)`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const Cover = styled(Card.Cover)`
-  background-color: white;
-  padding: 15px;
+  background-color: ${(props) => props.theme.colors.bg.primary};
+  padding: ${(props) => props.theme.space[3]};
+`;
+
+const Title = styled(Text)`
+  padding: ${(props) => props.theme.space[3]};
+  color: ${(props) => props.theme.colors.ui.primary};
 `;
 
 export const RestaurantInfoCard = ({
@@ -40,7 +45,7 @@ export const RestaurantInfoCard = ({
   return (
     <RestaurantCard elevation={6}>
       <Cover source={{ uri: photos[0] }} />
-      <Text>{name}</Text>
+      <Title>{name}</Title>
     </RestaurantCard>
   );
 };
