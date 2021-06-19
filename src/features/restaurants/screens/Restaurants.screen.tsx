@@ -1,13 +1,13 @@
 import React from "react";
 import {
   StyleSheet,
-  Text,
   View,
   SafeAreaView,
   StatusBar,
   Platform,
 } from "react-native";
 import { SearchBar } from "../../../components/SearchBar";
+import { RestaurantInfoCard } from "../components/RestaurantInfoCard.component";
 
 const isAndroid = Platform.OS === "android";
 
@@ -18,7 +18,7 @@ export const RestaurantsScreen = () => {
         <SearchBar />
       </View>
       <View style={styles.container}>
-        <Text>Our React Native Blank Canvas !</Text>
+        <RestaurantInfoCard />
       </View>
     </SafeAreaView>
   );
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: "blue",
+    backgroundColor: "lightpink",
   },
   searchContainer: {
     padding: 16,
