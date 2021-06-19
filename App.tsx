@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -6,43 +6,42 @@ import {
   SafeAreaView,
   StatusBar,
   Platform,
-} from 'react-native';
-import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+} from "react-native";
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 
-const isAndroid = Platform.OS === 'android';
+const isAndroid = Platform.OS === "android";
 
 export default function App() {
   return (
     <>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          // to keep space for current status bar
-          // we use marginTop in case of android
-          // but in case of iOS we use SafeAreaView
-          marginTop: isAndroid ? StatusBar.currentHeight : 0,
-        }}
-      >
+      <SafeAreaView style={styles.rootContainer}>
         <View style={styles.searchContainer}>
-          <Text>Search Container</Text>
+          <Text>Search Container 1</Text>
         </View>
         <View style={styles.container}>
           <Text>Our React Native Blank Canvas !</Text>
         </View>
       </SafeAreaView>
-      <ExpoStatusBar style='auto' />
+      <ExpoStatusBar style="auto" />
     </>
   );
 }
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    flex: 1,
+    // to keep space for current status bar
+    // we use marginTop in case of android
+    // but in case of iOS we use SafeAreaView
+    marginTop: isAndroid ? StatusBar.currentHeight : 0,
+  },
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: 'blue',
+    backgroundColor: "blue",
   },
   searchContainer: {
     padding: 16,
-    backgroundColor: 'green',
+    backgroundColor: "green",
   },
 });
