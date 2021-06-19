@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { Provider as PaperProvider } from "react-native-paper";
+import { SearchBar } from "./src/components/SearchBar";
 
 const isAndroid = Platform.OS === "android";
 
@@ -17,7 +18,7 @@ function App() {
     <>
       <SafeAreaView style={styles.rootContainer}>
         <View style={styles.searchContainer}>
-          <Text>Search Container 1</Text>
+          <SearchBar />
         </View>
         <View style={styles.container}>
           <Text>Our React Native Blank Canvas !</Text>
@@ -51,6 +52,5 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     padding: 16,
-    backgroundColor: "green",
   },
 });
