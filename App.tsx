@@ -8,10 +8,11 @@ import {
   Platform,
 } from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { Provider as PaperProvider } from "react-native-paper";
 
 const isAndroid = Platform.OS === "android";
 
-export default function App() {
+function App() {
   return (
     <>
       <SafeAreaView style={styles.rootContainer}>
@@ -24,6 +25,14 @@ export default function App() {
       </SafeAreaView>
       <ExpoStatusBar style="auto" />
     </>
+  );
+}
+
+export default function Main() {
+  return (
+    <PaperProvider>
+      <App />
+    </PaperProvider>
   );
 }
 
