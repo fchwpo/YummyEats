@@ -16,7 +16,7 @@ const SearchContainer = styled(View)`
   padding: ${(props) => props.theme.space[3]};
 `;
 
-const InfoContainer = styled(View)`
+const ListContainer = styled(View)`
   flex: 1;
   padding: ${(props) => props.theme.space[3]};
 `;
@@ -28,9 +28,9 @@ export const RestaurantsScreen = () => {
       <SearchContainer>
         <SearchBar />
       </SearchContainer>
-      <InfoContainer>
+      <ListContainer>
         <RestaurantInfoCard />
-      </InfoContainer>
+      </ListContainer>
     </SafeArea>
   );
 };
