@@ -15,6 +15,7 @@ const SafeArea = styled(SafeAreaView)`
 
 const SearchContainer = styled(View)`
   padding: ${(props) => props.theme.space[3]};
+  padding-top: 0;
 `;
 
 const ListContainer = styled(FlatList).attrs({
