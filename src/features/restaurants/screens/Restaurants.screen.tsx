@@ -5,6 +5,8 @@ import { SearchBar } from "../../../components/SearchBar";
 import { Spacer } from "../../../components/spacer/Spacer";
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard.component";
 
+const MemoizedRestaurantInfoCard = React.memo(RestaurantInfoCard, () => true);
+
 // to keep space for current status bar
 // we use marginTop in case of android
 // but in case of iOS we use SafeAreaView
@@ -103,7 +105,7 @@ export const RestaurantsScreen = () => {
         ]}
         renderItem={() => (
           <Spacer position={"bottom"} size={"lg"}>
-            <RestaurantInfoCard />
+            <MemoizedRestaurantInfoCard />
           </Spacer>
         )}
         keyExtractor={(item: any) => "key-" + item.name}
