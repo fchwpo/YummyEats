@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import stars from "../../../../assets/stars";
 import openNowIcon from "../../../../assets/open-now-icon";
-import { Spacer } from "../../../components/Spacer";
+import { Spacer } from "../../../components/spacer/Spacer";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
