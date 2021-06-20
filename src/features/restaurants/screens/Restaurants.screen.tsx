@@ -1,19 +1,12 @@
 import React from "react";
-import { View, SafeAreaView, StatusBar, FlatList } from "react-native";
+import { View, FlatList } from "react-native";
 import styled from "styled-components/native";
 import { SearchBar } from "../../../components/SearchBar";
 import { Spacer } from "../../../components/spacer/Spacer";
+import { SafeArea } from "../../../components/utility/SafeArea";
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard.component";
 
 const MemoizedRestaurantInfoCard = React.memo(RestaurantInfoCard, () => true);
-
-// to keep space for current status bar
-// we use marginTop in case of android
-// but in case of iOS we use SafeAreaView
-const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-`;
 
 const SearchContainer = styled(View)`
   padding: ${(props) => props.theme.space[3]};
