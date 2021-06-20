@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import { View } from "react-native";
+import React from "react";
+import { View, ViewProps } from "react-native";
 import styled from "styled-components/native";
 
 const sizesMap = {
@@ -10,8 +10,25 @@ const sizesMap = {
   xxl: 5,
 } as any;
 
-export const Spacer = styled(View)`
-  ${({ position, size, theme }) =>
+interface SpacerProps extends ViewProps {
+  position?: string;
+  size?: string;
+}
+
+const SpacerViewFC: React.FC<SpacerProps> = (props) => {
+  return <View {...props} />;
+};
+
+export const Spacer = styled(SpacerViewFC)`
+  ${({
+    position,
+    size,
+    theme,
+  }: {
+    position: string;
+    size: string;
+    theme: any;
+  }) =>
     `margin${position === "all" ? "" : `-${position}`}: ${
       theme.space[sizesMap[size]]
     }`}
@@ -19,9 +36,4 @@ export const Spacer = styled(View)`
 Spacer.defaultProps = {
   position: "top",
   size: "sm",
-};
-Spacer.propTypes = {
-  position: PropTypes.oneOf(["top", "left", "bottom", "right", "all"]),
-  size: PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
-  ...View.propTypes,
 };
