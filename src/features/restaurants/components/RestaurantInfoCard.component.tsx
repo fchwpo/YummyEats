@@ -1,11 +1,12 @@
 import React from "react";
-import { Text, View, Image } from "react-native";
+import { View, Image } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import stars from "../../../../assets/stars";
 import openNowIcon from "../../../../assets/open-now-icon";
 import { Spacer } from "../../../components/spacer/Spacer";
+import { Text } from "../../../components/typography/Text";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -21,22 +22,10 @@ const Info = styled(View)`
   padding-top: ${(props) => props.theme.space[0]};
 `;
 
-const Title = styled(Text)`
-  color: ${(props) => props.theme.colors.ui.primary};
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.title};
-`;
-
 const Rating = styled(View)`
   flex-direction: row;
   padding-top: ${(props) => props.theme.space[1]};
   padding-bottom: ${(props) => props.theme.space[1]};
-`;
-
-const Address = styled(Text)`
-  color: ${(props) => props.theme.colors.ui.primary};
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
 `;
 
 const IconsSection = styled(View)`
@@ -47,10 +36,6 @@ const IconsSection = styled(View)`
 const IconsSectionEnd = styled(View)`
   flex-direction: row;
   align-items: center;
-`;
-
-const ClosedTempInfo = styled(Text)`
-  color: ${(props) => props.theme.colors.text.error};
 `;
 
 const Icon = styled(Image)`
@@ -69,7 +54,7 @@ export const RestaurantInfoCard = ({
     address: "100, Some Random Street!",
     isOpenNow: true,
     rating: 4,
-    isClosedTemporarily: false,
+    isClosedTemporarily: true,
   },
 }: {
   restaurant?: any;
@@ -90,7 +75,7 @@ export const RestaurantInfoCard = ({
     <RestaurantCard elevation={6}>
       <Cover source={{ uri: photos[0] }} />
       <Info>
-        <Title>{name}</Title>
+        <Text variant="label">{name}</Text>
         <IconsSection>
           <Rating>
             {ratingArray.map((_, index) => (
@@ -99,7 +84,7 @@ export const RestaurantInfoCard = ({
           </Rating>
           <IconsSectionEnd>
             {isClosedTemporarily && (
-              <ClosedTempInfo>CLOSED TEMPORARILY</ClosedTempInfo>
+              <Text variant="error">CLOSED TEMPORARILY</Text>
             )}
             {isOpenNow && (
               <>
@@ -120,7 +105,7 @@ export const RestaurantInfoCard = ({
             )}
           </IconsSectionEnd>
         </IconsSection>
-        <Address>{address}</Address>
+        <Text variant="caption">{address}</Text>
       </Info>
     </RestaurantCard>
   );
