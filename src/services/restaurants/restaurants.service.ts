@@ -1,7 +1,9 @@
 import { mocks, mockImages } from "./mock";
 import camelize from "camelize-ts";
 
-export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
+export const restaurantsRequest = (
+  location = "37.7749295,-122.4194155"
+): Promise<{ results: [] }> => {
   return new Promise((resolve, reject) => {
     const mock = mocks[location];
     if (!mock) {
@@ -11,7 +13,7 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
   });
 };
 
-export const restaurantsTransform = ({ results = [] }: { results: any[]}) => {
+export const restaurantsTransform = ({ results = [] }: { results: any[] }) => {
   const mappedResults = results.map((restaurant) => {
     restaurant.photos = restaurant.photos.map(() => {
       return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
