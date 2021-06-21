@@ -24,17 +24,19 @@ export const withRestaurantContext = (
 
     useEffect(() => {
       setLoadingState(true);
-      restaurantsRequest()
-        .then(restaurantsTransform)
-        .then((results: any) => {
-          setRestaurants(results);
-        })
-        .catch((e) => {
-          setError(e);
-        })
-        .finally(() => {
-          setLoadingState(false);
-        });
+      setTimeout(() => {
+        restaurantsRequest()
+          .then(restaurantsTransform)
+          .then((results: any) => {
+            setRestaurants(results);
+          })
+          .catch((e) => {
+            setError(e);
+          })
+          .finally(() => {
+            setLoadingState(false);
+          });
+      }, 2000 * Math.random());
     }, []);
 
     return (

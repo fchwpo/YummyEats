@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { View, FlatList } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 import styled from "styled-components/native";
+import { Loader } from "../../../components/loaders/Loader";
 import { SearchBar } from "../../../components/SearchBar";
 import { Spacer } from "../../../components/spacer/Spacer";
 import { SafeArea } from "../../../components/utility/SafeArea";
@@ -26,6 +28,9 @@ export const RestaurantsScreen = () => {
   const restaurantContext = useContext(RestaurantContext);
   return (
     <SafeArea>
+      {restaurantContext.isLoading && (
+        <Loader size={50} animating={true} color={Colors.blue300} />
+      )}
       <SearchContainer>
         <SearchBar />
       </SearchContainer>
