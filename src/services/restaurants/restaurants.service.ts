@@ -1,5 +1,5 @@
 import { mocks, mockImages } from "./mock";
-import camelize from "camelize-ts";
+import camelcaseKeys from "camelcase-keys";
 
 export const restaurantsRequest = (
   location = "37.7749295,-122.4194155"
@@ -26,5 +26,7 @@ export const restaurantsTransform = ({ results = [] }: { results: any[] }) => {
     };
   });
 
-  return camelize(mappedResults);
+  return camelcaseKeys(mappedResults, {
+    deep: true,
+  });
 };
