@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 
-const RestaurantContext = createContext<{
+export const RestaurantContext = createContext<{
   restaurants: any[];
 }>({
   restaurants: [],
@@ -13,7 +13,23 @@ export const withRestaurantContext = (
     return (
       <RestaurantContext.Provider
         value={{
-          restaurants: [],
+          restaurants: [
+            {
+              name: 1,
+            },
+            {
+              name: 2,
+            },
+            {
+              name: 3,
+            },
+            {
+              name: 4,
+            },
+            {
+              name: 5,
+            },
+          ],
         }}
       >
         <WrappedComponent {...props} />

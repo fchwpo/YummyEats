@@ -14,6 +14,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { SafeArea } from "./src/components/utility/SafeArea";
+import { withRestaurantContext } from "./src/services/restaurants/restaurants.context";
 
 const TAB_ICON = {
   Restaurants: "md-restaurant",
@@ -84,10 +85,12 @@ function App() {
   );
 }
 
+const AppWithRestaurantContext = withRestaurantContext(App);
+
 export default function Main() {
   return (
     <PaperProvider>
-      <App />
+      <AppWithRestaurantContext />
     </PaperProvider>
   );
 }
