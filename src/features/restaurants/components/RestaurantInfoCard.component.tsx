@@ -44,7 +44,7 @@ export const RestaurantInfoCard = ({
 
   return (
     <RestaurantCard elevation={6}>
-      <Cover source={{ uri: photos[Math.random() > 0.5 ? 1 : 0] }} />
+      <Cover source={{ uri: photos[0] }} />
       <Info>
         <Text variant="label">{name}</Text>
         <IconsSection>
