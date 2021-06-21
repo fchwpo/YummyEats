@@ -14,7 +14,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { SafeArea } from "./src/components/utility/SafeArea";
-import { withRestaurantContext } from "./src/services/restaurants/restaurants.context";
+import { withRestaurantContext } from "./src/services/restaurants/restaurants.provider";
 import { LocationContextProvider } from "./src/services/location/location.provider";
 
 const TAB_ICON = {

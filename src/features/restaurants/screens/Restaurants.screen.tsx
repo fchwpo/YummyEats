@@ -6,7 +6,7 @@ import { Loader } from "../../../components/loaders/Loader";
 import { SearchBar } from "../../../components/SearchBar";
 import { Spacer } from "../../../components/spacer/Spacer";
 import { SafeArea } from "../../../components/utility/SafeArea";
-import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
+import { RestaurantContext } from "../../../services/restaurants/restaurants.provider";
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard.component";
 
 const MemoizedRestaurantInfoCard = React.memo(RestaurantInfoCard);

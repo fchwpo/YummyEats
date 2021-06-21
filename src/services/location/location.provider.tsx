@@ -1,5 +1,4 @@
 import React, { useState, useEffect, ReactElement, createContext } from "react";
-
 import { locationRequest, locationTransform } from "./location.service";
 
 export const LocationContext = createContext<{
@@ -9,7 +8,7 @@ export const LocationContext = createContext<{
     lat: string;
     lng: string;
   } | null;
-  search: (x: string) => void;
+  search: any;
   keyword: string;
 }>({
   isLoading: false,
