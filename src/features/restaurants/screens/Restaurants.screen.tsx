@@ -24,7 +24,6 @@ const ListContainer = styled(FlatList).attrs({
 
 export const RestaurantsScreen = () => {
   const restaurantContext = useContext(RestaurantContext);
-  console.log(restaurantContext);
   return (
     <SafeArea>
       <SearchContainer>

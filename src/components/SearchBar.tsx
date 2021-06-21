@@ -10,9 +10,7 @@ export const SearchBar = () => {
       onChangeText={(text) => {
         setSearchText(text);
       }}
-      onSubmitEditing={() => {
-        console.log(searchText);
-      }}
+      onSubmitEditing={() => {}}
       inputStyle={styles.inputStyle}
       placeholder="Search"
     />
