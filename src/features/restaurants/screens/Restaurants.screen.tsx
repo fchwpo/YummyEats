@@ -7,7 +7,7 @@ import { SafeArea } from "../../../components/utility/SafeArea";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard.component";
 
-const MemoizedRestaurantInfoCard = React.memo(RestaurantInfoCard, () => true);
+const MemoizedRestaurantInfoCard = React.memo(RestaurantInfoCard);
 
 const SearchContainer = styled(View)`
   padding: ${(props) => props.theme.space[3]};
@@ -31,9 +31,9 @@ export const RestaurantsScreen = () => {
       </SearchContainer>
       <ListContainer
         data={restaurantContext.restaurants}
-        renderItem={() => (
+        renderItem={({ item }) => (
           <Spacer position={"bottom"} size={"lg"}>
-            <MemoizedRestaurantInfoCard />
+            <MemoizedRestaurantInfoCard restaurant={item} />
           </Spacer>
         )}
         keyExtractor={(item: any) => "key-" + item.name}
