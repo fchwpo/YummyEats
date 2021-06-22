@@ -6,6 +6,8 @@ import { LocationContext } from "../../../services/location/location.provider";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.provider";
 import { Search } from "../components/Search.component";
 import { MapCallout } from "../components/MapCallout.component";
+import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
+import { AppTabParamsList } from "src/infrastructure/navigation/app.navigation";
 
 const Container = styled(View)`
   flex: 1;
@@ -16,7 +18,9 @@ const Map = styled(MapView)`
   height: 100%;
 `;
 
-export const MapScreen = () => {
+export const MapScreen = ({
+  navigation,
+}: BottomTabBarProps<AppTabParamsList>) => {
   const [latDelta, setLatDelta] = useState(0);
   const { location } = useContext(LocationContext);
   const { restaurants } = useContext(RestaurantContext);
@@ -49,6 +53,11 @@ export const MapScreen = () => {
                 longitude: restaurant.geometry.location.lng,
               }}
               key={restaurant.placeId}
+              onCalloutPress={() => {
+                navigation.navigate("RestaurantsDetails", {
+                  item: restaurant,
+                });
+              }}
             >
               <Callout>
                 <MapCallout restaurantInfo={restaurant} />

@@ -13,7 +13,13 @@ const TAB_ICON = {
   Settings: "md-settings",
 } as any;
 
-const Tab = createBottomTabNavigator();
+export type AppTabParamsList = {
+  Restaurants: undefined;
+  Map: undefined;
+  Settings: undefined;
+};
+
+const Tab = createBottomTabNavigator<AppTabParamsList>();
 const createScreenOptions = ({ route }: { route: any }) => {
   const iconName = TAB_ICON[route.name];
   return {
