@@ -28,9 +28,7 @@ function App() {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Navigation />
-      </ThemeProvider>
+      <Navigation />
       <ExpoStatusBar style="auto" />
     </>
   );
@@ -41,9 +39,11 @@ const AppWithRestaurantContext = withRestaurantContext(App);
 export default function Main() {
   return (
     <PaperProvider>
-      <LocationContextProvider>
-        <AppWithRestaurantContext />
-      </LocationContextProvider>
+      <ThemeProvider theme={theme}>
+        <LocationContextProvider>
+          <AppWithRestaurantContext />
+        </LocationContextProvider>
+      </ThemeProvider>
     </PaperProvider>
   );
 }
