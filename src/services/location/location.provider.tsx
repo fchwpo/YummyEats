@@ -29,7 +29,7 @@ export const LocationContextProvider = ({
     lng: string;
   } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const onSearch = (searchKeyword = "Antwerp") => {
     setIsLoading(true);
@@ -39,6 +39,7 @@ export const LocationContextProvider = ({
       .then((result) => {
         setIsLoading(false);
         setLocation(result);
+        setError("");
       })
       .catch((err) => {
         setIsLoading(false);
