@@ -34,6 +34,9 @@ export const LocationContextProvider = ({
   const onSearch = (searchKeyword = "Antwerp") => {
     setIsLoading(true);
     setKeyword(searchKeyword);
+  };
+
+  const fetchLocationData = (searchKeyword: string) => {
     locationRequest(searchKeyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
@@ -48,8 +51,8 @@ export const LocationContextProvider = ({
   };
 
   useEffect(() => {
-    onSearch();
-  }, []);
+    fetchLocationData(keyword);
+  }, [keyword]);
 
   return (
     <LocationContext.Provider

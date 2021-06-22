@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { LocationContext } from "../location/location.provider";
 import {
   restaurantsRequest,
   restaurantsTransform,
@@ -21,23 +22,28 @@ export const withRestaurantContext = (
     const [restaurants, setRestaurants] = useState<any[]>([]);
     const [isLoading, setLoadingState] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const { location } = useContext(LocationContext);
 
     useEffect(() => {
-      setLoadingState(true);
-      setTimeout(() => {
-        restaurantsRequest()
-          .then(restaurantsTransform)
-          .then((results: any) => {
-            setRestaurants(results);
-          })
-          .catch((e) => {
-            setError(e);
-          })
-          .finally(() => {
-            setLoadingState(false);
-          });
-      }, 2000 * Math.random());
-    }, []);
+      setRestaurants([]);
+      if (location) {
+        setLoadingState(true);
+        const locationString = `${location?.lat},${location?.lng}`;
+        setTimeout(() => {
+          restaurantsRequest(locationString)
+            .then(restaurantsTransform)
+            .then((results: any) => {
+              setRestaurants(results);
+            })
+            .catch((e) => {
+              setError(e);
+            })
+            .finally(() => {
+              setLoadingState(false);
+            });
+        }, 2000 * Math.random());
+      }
+    }, [location]);
 
     return (
       <RestaurantContext.Provider
