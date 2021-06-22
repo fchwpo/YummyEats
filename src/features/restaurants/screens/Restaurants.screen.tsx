@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FlatList, Pressable } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import styled from "styled-components/native";
 import { Loader } from "../../../components/loaders/Loader";
@@ -34,7 +34,7 @@ export const RestaurantsScreen = ({
       <ListContainer
         data={restaurantContext.restaurants}
         renderItem={({ item }) => (
-          <Pressable
+          <TouchableOpacity
             onPress={() => {
               navigation.push("RestaurantsDetails");
             }}
@@ -42,7 +42,7 @@ export const RestaurantsScreen = ({
             <Spacer position={"bottom"} size={"lg"}>
               <MemoizedRestaurantInfoCard restaurant={item} />
             </Spacer>
-          </Pressable>
+          </TouchableOpacity>
         )}
         keyExtractor={(item: any) => "key-" + item.name}
       />
