@@ -1,6 +1,6 @@
 import React from "react";
-import { Text } from "react-native";
+import { CompactRestaurantInfo } from "../../../components/restaurant/CompactInfo";
 
 export const MapCallout = ({ restaurantInfo }: { restaurantInfo: any }) => {
-  return <Text>{restaurantInfo.name}</Text>;
+  return <CompactRestaurantInfo restaurant={restaurantInfo} />;
 };
