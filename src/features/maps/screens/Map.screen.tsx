@@ -20,22 +20,23 @@ export const MapScreen = () => {
   const [latDelta, setLatDelta] = useState(0);
   const { location } = useContext(LocationContext);
   const { restaurants } = useContext(RestaurantContext);
-  const { lat, lng, viewport } = location;
+  const { lat = "37.7749295", lng = "-122.4194155" } = location || {};
 
   useEffect(() => {
+    const viewport = location?.viewport;
     const northeastLat = viewport.northeast.lat;
     const southwestLat = viewport.southwest.lat;
 
     setLatDelta(northeastLat - southwestLat);
-  }, [location, viewport]);
+  }, [location]);
 
   return (
     <Container>
       <Search />
       <Map
         region={{
-          latitude: lat,
-          longitude: lng,
+          latitude: Number(lat),
+          longitude: Number(lng),
           latitudeDelta: latDelta,
           longitudeDelta: 0.02,
         }}
