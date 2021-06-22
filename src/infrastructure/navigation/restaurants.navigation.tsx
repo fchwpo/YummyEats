@@ -1,8 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { RestaurantsScreen } from "../../features/restaurants/screens/Restaurants.screen";
-import { Text } from "react-native";
-import { SafeArea } from "../../components/utility/SafeArea";
+import { RestaurantsDetails } from "../../features/restaurants/screens/RestaurantsDetails.screen";
 
 export type RestaurantsStackParamList = {
   RestaurantsList: undefined;
@@ -12,15 +11,6 @@ export type RestaurantsStackParamList = {
 };
 
 const RestaurantsStack = createStackNavigator<RestaurantsStackParamList>();
-
-function DetailsScreen({ route }) {
-  return (
-    <SafeArea>
-      <Text>Restaurant Details!</Text>
-      <Text>{route.params.placeId}</Text>
-    </SafeArea>
-  );
-}
 
 export const RestaurantsNavigation = () => {
   return (
@@ -37,7 +27,7 @@ export const RestaurantsNavigation = () => {
       />
       <RestaurantsStack.Screen
         name="RestaurantsDetails"
-        component={DetailsScreen}
+        component={RestaurantsDetails}
       />
     </RestaurantsStack.Navigator>
   );
