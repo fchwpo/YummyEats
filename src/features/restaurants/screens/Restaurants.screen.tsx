@@ -37,7 +37,7 @@ export const RestaurantsScreen = ({
           <TouchableOpacity
             onPress={() => {
               navigation.push("RestaurantsDetails", {
-                placeId: item.placeId,
+                item,
               });
             }}
           >

@@ -6,7 +6,7 @@ import { RestaurantsDetails } from "../../features/restaurants/screens/Restauran
 export type RestaurantsStackParamList = {
   RestaurantsList: undefined;
   RestaurantsDetails: {
-    placeId: string;
+    item: any;
   };
 };
 
