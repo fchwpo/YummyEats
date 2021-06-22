@@ -25,10 +25,16 @@ const Item = styled.View`
 
 const isAndroid = Platform.OS === "android";
 
-export const CompactRestaurantInfo = ({ restaurant }: { restaurant: any }) => {
+export const CompactRestaurantInfo = ({
+  restaurant,
+  isMap,
+}: {
+  restaurant: any;
+  isMap?: boolean;
+}) => {
   // Due to issue in which in case of maps images are not rendered by Android
   // Hence we use react-native-webview for the same which is rendered properly in android
-  const Image = isAndroid ? CompactWebview : CompactImage;
+  const Image = isAndroid && isMap ? CompactWebview : CompactImage;
 
   return (
     <Item>
