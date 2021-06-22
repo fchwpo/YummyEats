@@ -7,6 +7,7 @@ export const LocationContext = createContext<{
   location: {
     lat: string;
     lng: string;
+    viewport: any;
   } | null;
   search: any;
   keyword: string;
@@ -27,6 +28,7 @@ export const LocationContextProvider = ({
   const [location, setLocation] = useState<{
     lat: string;
     lng: string;
+    viewport: any;
   } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

@@ -7,7 +7,7 @@ import { Spacer } from "../../../components/spacer/Spacer";
 import { SafeArea } from "../../../components/utility/SafeArea";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.provider";
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard.component";
-import { Search } from "../components/Search";
+import { Search } from "../components/Search.component";
 import { StackScreenProps } from "@react-navigation/stack";
 import { RestaurantsStackParamList } from "src/infrastructure/navigation/restaurants.navigation";
 
