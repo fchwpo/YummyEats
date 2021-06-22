@@ -6,15 +6,18 @@ import { SafeArea } from "../../components/utility/SafeArea";
 
 export type RestaurantsStackParamList = {
   RestaurantsList: undefined;
-  RestaurantsDetails: undefined;
+  RestaurantsDetails: {
+    placeId: string;
+  };
 };
 
 const RestaurantsStack = createStackNavigator<RestaurantsStackParamList>();
 
-function DetailsScreen() {
+function DetailsScreen({ route }) {
   return (
     <SafeArea>
       <Text>Restaurant Details!</Text>
+      <Text>{route.params.placeId}</Text>
     </SafeArea>
   );
 }

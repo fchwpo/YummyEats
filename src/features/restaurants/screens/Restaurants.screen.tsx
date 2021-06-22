@@ -33,10 +33,12 @@ export const RestaurantsScreen = ({
       <Search />
       <ListContainer
         data={restaurantContext.restaurants}
-        renderItem={({ item }) => (
+        renderItem={({ item }: { item: any }) => (
           <TouchableOpacity
             onPress={() => {
-              navigation.push("RestaurantsDetails");
+              navigation.push("RestaurantsDetails", {
+                placeId: item.placeId,
+              });
             }}
           >
             <Spacer position={"bottom"} size={"lg"}>
