@@ -7,13 +7,13 @@ import { Text } from "../typography/Text";
 
 const CompactImage = styled.Image`
   border-radius: 10px;
-  width: 120px;
+  width: 110px;
   height: 100px;
 `;
 
 const CompactWebview = styled(WebView)`
   border-radius: 10px;
-  width: 120px;
+  width: 110px;
   height: 100px;
 `;
 
@@ -21,6 +21,8 @@ const Item = styled.View`
   padding: 10px;
   max-width: 120px;
   align-items: center;
+  border-radius: 10px;
+  background-color: white;
 `;
 
 const isAndroid = Platform.OS === "android";
