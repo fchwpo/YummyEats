@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Searchbar as PaperSearchBar } from "react-native-paper";
 import { LocationContext } from "../services/location/location.provider";
 
-export const SearchBar = () => {
+export const SearchBar = ({ icon, onIconPress }: any) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchText, setSearchText] = useState(keyword);
 
@@ -13,6 +13,8 @@ export const SearchBar = () => {
 
   return (
     <PaperSearchBar
+      icon={icon}
+      onIconPress={onIconPress}
       value={searchText}
       onChangeText={(text) => {
         setSearchText(text);

@@ -8,10 +8,13 @@ const SearchContainer = styled(View)`
   padding-top: 0;
 `;
 
-export const Search = () => {
+export const Search = ({ isFavouritesToggled, onFavouritesToggle }: any) => {
   return (
     <SearchContainer>
-      <SearchBar />
+      <SearchBar
+        icon={isFavouritesToggled ? "heart" : "heart-outline"}
+        onIconPress={onFavouritesToggle}
+      />
     </SearchContainer>
   );
 };

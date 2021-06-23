@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import styled from "styled-components/native";
@@ -9,7 +9,9 @@ import { RestaurantContext } from "../../../services/restaurants/restaurants.pro
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard.component";
 import { Search } from "../components/Search.component";
 import { StackScreenProps } from "@react-navigation/stack";
-import { RestaurantsStackParamList } from "src/infrastructure/navigation/restaurants.navigation";
+import { RestaurantsStackParamList } from "../../../infrastructure/navigation/restaurants.navigation";
+import { FavouritesBar } from "../../../components/favourite/FavoritesBar.component";
+import { FavouritesContext } from "../../../services/favourites/favourites.provider";
 
 const MemoizedRestaurantInfoCard = React.memo(RestaurantInfoCard);
 
@@ -25,12 +27,24 @@ export const RestaurantsScreen = ({
   navigation,
 }: StackScreenProps<RestaurantsStackParamList, "RestaurantsList">) => {
   const restaurantContext = useContext(RestaurantContext);
+  const { favourites } = useContext(FavouritesContext);
+  const [isToggled, setIsToggled] = useState(false);
+
   return (
     <SafeArea>
       {restaurantContext.isLoading && (
         <Loader size={50} animating={true} color={Colors.blue300} />
       )}
-      <Search />
+      <Search
+        isFavouritesToggled={isToggled}
+        onFavouritesToggle={() => setIsToggled(!isToggled)}
+      />
+      {isToggled && (
+        <FavouritesBar
+          favourites={favourites}
+          onNavigate={navigation.navigate}
+        />
+      )}
       <ListContainer
         data={restaurantContext.restaurants}
         renderItem={({ item }: { item: any }) => (
